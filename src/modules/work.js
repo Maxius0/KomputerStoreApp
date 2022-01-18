@@ -7,6 +7,7 @@ const payElement = document.getElementById("pay");
 
 let pay = 0;
 
+// Initializes "work" functionality by adding event listeners to associated buttons.
 function init() {
   workElement.addEventListener("click", handleWork);
   bankElement.addEventListener("click", handleBank);
