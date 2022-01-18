@@ -1,7 +1,15 @@
+import * as Work from "./work.js";
+
+const loanElement = document.getElementById("loan");
 const balanceElement = document.getElementById("balance");
 const outstandingLoanElement = document.getElementById("outstanding");
+
 let balance = 1000;
 let outstandingLoan = 0;
+
+function init() {
+  loanElement.addEventListener("click", handleLoan);
+}
 
 function updateBalance(increase) {
   balance += increase;
@@ -10,7 +18,14 @@ function updateBalance(increase) {
 
 function updateOutstandingLoan(increase) {
   outstandingLoan += increase;
-  outstandingLoanElement.innerText = "Outstanding loan: " + outstandingLoan;
+  outstandingLoanElement.innerText += outstandingLoan;
+  if (outstandingLoan > 0) {
+    outstandingLoanElement.removeAttribute("hidden");
+    Work.repayElement.removeAttribute("hidden");
+  } else {
+    outstandingLoanElement.setAttribute("hidden", "");
+    Work.repayElement.setAttribute("hidden", "");
+  }
 }
 
 function handleLoan() {
@@ -30,6 +45,7 @@ function handleLoan() {
 export {
   balance,
   outstandingLoan,
+  init,
   handleLoan,
   updateBalance,
   updateOutstandingLoan,
