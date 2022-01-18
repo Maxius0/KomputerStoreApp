@@ -20,4 +20,4 @@ PRs accepted.
 
 ## Authors
 
-[Marius Balslev Samson](mariusbsamson@gmail.com)
+[Marius Balslev Samson](mailto:mariusbsamson@gmail.com)
