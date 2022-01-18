@@ -1,10 +1,5 @@
-import * as Bank from "./modules/bank.js";
-import * as Work from "./modules/work.js";
+import { init as initBank } from "./modules/bank.js";
+import { init as initWork } from "./modules/work.js";
 
-const loanElement = document.getElementById("loan");
-const workElement = document.getElementById("goto-work");
-const bankElement = document.getElementById("bank-pay");
-
-loanElement.addEventListener("click", Bank.handleLoan);
-workElement.addEventListener("click", Work.handleWork);
-bankElement.addEventListener("click", Work.handleBank);
+initBank();
+initWork();
