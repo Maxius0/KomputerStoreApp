@@ -16,6 +16,8 @@ function init() {
     .then((data) => (laptops = data))
     .then((laptops) => addLaptopsToMenu(laptops))
     .then(selectElement.addEventListener("change", handleLaptopMenuChange));
+
+  buyElement.addEventListener("click", handleBuy);
 }
 
 // Goes through every laptop and adds it to the selection menu
@@ -30,17 +32,6 @@ function addLaptopToMenu(laptop) {
   laptopElement.value = laptop.id;
   laptopElement.appendChild(document.createTextNode(laptop.title));
   selectElement.appendChild(laptopElement);
-}
-
-// Changes elements to their appropriate values according to selected laptop.
-// To be used with the laptop selection menu.
-function handleLaptopMenuChange(event) {
-  const selectedLaptop = laptops[event.target.selectedIndex];
-  nameElement.innerText = selectedLaptop.title;
-  descriptionElement.innerText = selectedLaptop.description;
-  priceElement.innerText = selectedLaptop.price;
-  clearSpecList();
-  createSpecList(selectedLaptop);
 }
 
 // Takes the specs of a laptop and turns them into list elements.
@@ -66,6 +57,30 @@ function setDefaultValues(laptops) {
   descriptionElement.innerText = firstLaptop.description;
   priceElement.innerText = firstLaptop.price;
   createSpecList(firstLaptop);
+}
+
+// Changes elements to their appropriate values according to selected laptop.
+// To be used with the laptop selection menu.
+function handleLaptopMenuChange(event) {
+  const selectedLaptop = laptops[event.target.selectedIndex];
+  nameElement.innerText = selectedLaptop.title;
+  descriptionElement.innerText = selectedLaptop.description;
+  priceElement.innerText = selectedLaptop.price;
+  clearSpecList();
+  createSpecList(selectedLaptop);
+}
+
+// Checks if the user can afford the currently selected laptop.
+// If so, buys it. Either way, displays an appropriate message.
+// To be used with the "BUY NOW" button.
+function handleBuy() {
+  const price = Number(priceElement.innerText);
+  if (price <= Bank.balance) {
+    Bank.updateBalance(-price);
+    alert("Congratulations! You bought " + nameElement.innerText);
+  } else {
+    alert("Sorry! You can't afford " + nameElement.innerText);
+  }
 }
 
 export { init };
