@@ -4,7 +4,7 @@ const loanElement = document.getElementById("loan");
 const balanceElement = document.getElementById("balance");
 const outstandingLoanElement = document.getElementById("outstanding");
 
-let balance = 1000;
+let balance = 0;
 let outstandingLoan = 0;
 
 // Initializes "bank" functionality by adding event listeners to associated buttons.
