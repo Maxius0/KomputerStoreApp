@@ -1,17 +1,19 @@
 import * as Bank from "./bank.js";
 
+const apiURL = "https://noroff-komputer-store-api.herokuapp.com/";
 const selectElement = document.getElementById("laptops-select");
 const nameElement = document.getElementById("laptop-name");
 const featuresElement = document.getElementById("laptop-features");
 const descriptionElement = document.getElementById("laptop-description");
 const priceElement = document.getElementById("laptop-price");
 const buyElement = document.getElementById("buy");
+const imgElement = document.getElementById("laptop-img");
 
 let laptops = [];
 
 // Initializes "laptops" by fetching api data and adding event listeners.
 function init() {
-  fetch("https://noroff-komputer-store-api.herokuapp.com/computers")
+  fetch(apiURL + "computers")
     .then((response) => response.json())
     .then((data) => (laptops = data))
     .then((laptops) => addLaptopsToMenu(laptops))
@@ -55,8 +57,10 @@ function setDefaultValues(laptops) {
   const firstLaptop = laptops[0];
   nameElement.innerText = firstLaptop.title;
   descriptionElement.innerText = firstLaptop.description;
+  imgElement.setAttribute("src", apiURL + firstLaptop.image);
   priceElement.innerText = firstLaptop.price;
   createSpecList(firstLaptop);
+  laptops[4].image = "assets/images/5.png"; // fix for erroneous URL
 }
 
 // Changes elements to their appropriate values according to selected laptop.
@@ -65,6 +69,7 @@ function handleLaptopMenuChange(event) {
   const selectedLaptop = laptops[event.target.selectedIndex];
   nameElement.innerText = selectedLaptop.title;
   descriptionElement.innerText = selectedLaptop.description;
+  imgElement.setAttribute("src", apiURL + selectedLaptop.image);
   priceElement.innerText = selectedLaptop.price;
   clearSpecList();
   createSpecList(selectedLaptop);
