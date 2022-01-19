@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script type="module" src="app.js" defer></script>
   </head>
   <body>
     <h1>Komputer Store</h1>
@@ -21,6 +22,19 @@
       <button id="goto-work">Work</button>
       <button id="repay-loan" hidden>Repay Loan</button>
     </div>
-    <script type="module" src="app.js"></script>
+    <div id="laptops">
+      <h2>Laptops</h2>
+      <select id="laptops-select"></select>
+      <p id="laptop-features">
+        <b>Features:</b><br />
+        Laptop features.
+      </p>
+    </div>
+    <div id="laptops-info">
+      <h3>Laptop Name</h3>
+      <p id="laptop-description">Laptop description.</p>
+      <span id="laptop-price"><b>Laptop Price</b></span>
+      <button id="buy">BUY NOW</button>
+    </div>
   </body>
 </html>
