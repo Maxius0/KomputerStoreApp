@@ -39,11 +39,15 @@ function handleLoan() {
     alert("You already owe money!");
   } else {
     const loanAmount = Number(window.prompt("Enter loan amount:"));
-    if (loanAmount > 0 && loanAmount <= balance * 2) {
-      updateOutstandingLoan(loanAmount);
-      updateBalance(loanAmount);
+    if (loanAmount > 0) {
+      if (loanAmount <= balance * 2) {
+        updateOutstandingLoan(loanAmount);
+        updateBalance(loanAmount);
+      } else {
+        alert("You may not loan more than double your bank balance.");
+      }
     } else {
-      alert("Invalid amount!");
+      alert("Invalid input!");
     }
   }
 }
