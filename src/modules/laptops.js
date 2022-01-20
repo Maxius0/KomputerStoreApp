@@ -58,7 +58,7 @@ function setDefaultValues(laptops) {
   nameElement.innerText = firstLaptop.title;
   descriptionElement.innerText = firstLaptop.description;
   imgElement.setAttribute("src", apiURL + firstLaptop.image);
-  priceElement.innerText = firstLaptop.price;
+  priceElement.innerText = "DKK " + firstLaptop.price + ",-";
   createSpecList(firstLaptop);
   laptops[4].image = "assets/images/5.png"; // fix for erroneous URL
 }
@@ -70,7 +70,7 @@ function handleLaptopMenuChange(event) {
   nameElement.innerText = selectedLaptop.title;
   descriptionElement.innerText = selectedLaptop.description;
   imgElement.setAttribute("src", apiURL + selectedLaptop.image);
-  priceElement.innerText = selectedLaptop.price;
+  priceElement.innerText = "DKK " + selectedLaptop.price + ",-";
   clearSpecList();
   createSpecList(selectedLaptop);
 }
