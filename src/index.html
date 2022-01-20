@@ -5,35 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
     <script type="module" src="app.js" defer></script>
   </head>
   <body>
-    <h1>Komputer Store</h1>
-    <div id="bank">
-      <h2>Bank</h2>
-      Balance: <span id="balance">0</span><br />
-      <span id="outstanding" hidden></span><br />
-      <button id="loan">Take loan</button>
-    </div>
-    <div id="work">
-      <h2>Work</h2>
-      Pay: <span id="pay">0</span><br />
-      <button id="bank-pay">Bank</button>
-      <button id="goto-work">Work</button>
-      <button id="repay-loan" hidden>Repay Loan</button>
-    </div>
-    <div id="laptops">
-      <h2>Laptops</h2>
-      <select id="laptops-select"></select>
-      <h4>Features:</h4>
-      <ul id="laptop-features"></ul>
-    </div>
-    <div id="laptops-info">
-      <h3 id="laptop-name">Laptop Name</h3>
-      <p id="laptop-description">Laptop description.</p>
-      <img id="laptop-img" height="300" width="300" /><br />
-      <b>Price: <span id="laptop-price"></span></b><br />
-      <button id="buy">BUY NOW</button>
-    </div>
+    <header>
+      <h1>Komputer Store</h1>
+    </header>
+    <main>
+      <div id="bank" class="section">
+        <h2>Bank</h2>
+        Balance (DKK): <span id="balance">0</span>
+        <span id="outstanding-text" hidden>Outstanding loan: </span
+        ><span id="outstanding" hidden></span>
+        <button id="loan">Get a loan</button>
+      </div>
+      <div id="work" class="section">
+        <h2>Work</h2>
+        Pay (DKK): <span id="pay">0</span>
+        <button id="bank-pay">Bank</button>
+        <button id="goto-work">Work</button>
+        <button id="repay-loan" hidden>Repay Loan</button>
+      </div>
+      <div id="laptops" class="section">
+        <h2>Laptops</h2>
+        <select id="laptops-select"></select>
+        <h4>Features:</h4>
+        <ul id="laptop-features"></ul>
+      </div>
+      <div id="laptops-info">
+        <h3 id="laptop-name">Laptop Name</h3>
+        <p id="laptop-description">Laptop description.</p>
+        <img id="laptop-img" height="300" width="300" />
+        <span id="laptop-price"></span>
+        <button id="buy">BUY NOW</button>
+      </div>
+    </main>
   </body>
 </html>
