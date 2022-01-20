@@ -3,6 +3,7 @@ import * as Work from "./work.js";
 const loanElement = document.getElementById("loan");
 const balanceElement = document.getElementById("balance");
 const outstandingLoanElement = document.getElementById("outstanding");
+const outstandingLoanTextElement = document.getElementById("outstanding-text");
 
 let balance = 0;
 let outstandingLoan = 0;
@@ -23,12 +24,14 @@ function updateBalance(increase) {
 // arg: amount to increase outstanding loan by.
 function updateOutstandingLoan(increase) {
   outstandingLoan += increase;
-  outstandingLoanElement.innerText = "Outstanding loan: " + outstandingLoan;
+  outstandingLoanElement.innerText = outstandingLoan;
   if (outstandingLoan > 0) {
     outstandingLoanElement.removeAttribute("hidden");
+    outstandingLoanTextElement.removeAttribute("hidden");
     Work.repayElement.removeAttribute("hidden");
   } else {
     outstandingLoanElement.setAttribute("hidden", "");
+    outstandingLoanTextElement.setAttribute("hidden", "");
     Work.repayElement.setAttribute("hidden", "");
   }
 }
