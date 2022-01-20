@@ -14,14 +14,14 @@ function init() {
   repayElement.addEventListener("click", handleRepayLoan);
 }
 
-// Updates current pay and displays the updated pay
-// arg: amount to increase pay by
+// Updates current pay and displays the updated pay.
+// arg: amount to increase pay by.
 function updatePay(increase) {
   pay += increase;
   payElement.innerText = pay;
 }
 
-// Increases pay by 100. To be used with "Work" button
+// Increases pay by 100. To be used with "Work" button.
 function handleWork() {
   updatePay(100);
 }
