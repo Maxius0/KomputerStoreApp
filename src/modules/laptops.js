@@ -10,6 +10,7 @@ const buyElement = document.getElementById("buy");
 const imgElement = document.getElementById("laptop-img");
 
 let laptops = [];
+let price = 0;
 
 // Initializes "laptops" by fetching api data and adding event listeners.
 function init() {
@@ -55,10 +56,11 @@ function clearSpecList() {
 // Sets all elements to their default values, i.e. the value of the first laptop in the menu.
 function setDefaultValues(laptops) {
   const firstLaptop = laptops[0];
+  price = firstLaptop.price;
   nameElement.innerText = firstLaptop.title;
   descriptionElement.innerText = firstLaptop.description;
   imgElement.setAttribute("src", apiURL + firstLaptop.image);
-  priceElement.innerText = "DKK " + firstLaptop.price + ",-";
+  priceElement.innerText = "DKK " + price + ",-";
   createSpecList(firstLaptop);
   laptops[4].image = "assets/images/5.png"; // fix for erroneous URL
 }
@@ -67,10 +69,11 @@ function setDefaultValues(laptops) {
 // To be used with the laptop selection menu.
 function handleLaptopMenuChange(event) {
   const selectedLaptop = laptops[event.target.selectedIndex];
+  price = selectedLaptop.price;
   nameElement.innerText = selectedLaptop.title;
   descriptionElement.innerText = selectedLaptop.description;
   imgElement.setAttribute("src", apiURL + selectedLaptop.image);
-  priceElement.innerText = "DKK " + selectedLaptop.price + ",-";
+  priceElement.innerText = "DKK " + price + ",-";
   clearSpecList();
   createSpecList(selectedLaptop);
 }
@@ -79,7 +82,6 @@ function handleLaptopMenuChange(event) {
 // If so, buys it. Either way, displays an appropriate message.
 // To be used with the "BUY NOW" button.
 function handleBuy() {
-  const price = Number(priceElement.innerText);
   if (price <= Bank.balance) {
     Bank.updateBalance(-price);
     alert("Congratulations! You bought " + nameElement.innerText);
